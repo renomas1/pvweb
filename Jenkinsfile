@@ -12,12 +12,16 @@ pipeline {
       steps {
         sh '''
         sudo kubectl delete -k ./
+	sudo kubectl delete -f pv1.yml
+	sudo kubectl delete -f pv2.yml
         '''
       }
     }
     stage('create container') {
       steps {
         sh '''
+	sudo kubectl apply -f pv1.yml
+	sudo kubectl apply -f pv2.yml
         sudo kubectl apply -k ./
                 '''
       }
