@@ -11,7 +11,7 @@ pipeline {
     stage('delete container') {
       steps {
         sh '''
-        
+        sudo kubectl delete -k ./
         '''
       }
     }
