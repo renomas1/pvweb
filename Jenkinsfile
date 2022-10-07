@@ -5,7 +5,7 @@ pipeline {
       steps {
         git branch: 'main',
         credentialsId: 'renomas1',
-        url: 'https://github.com/renomas1/project'
+        url: 'https://github.com/renomas1/pvweb'
             }
         }
     stage('delete container') {
