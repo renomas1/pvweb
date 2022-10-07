@@ -11,7 +11,7 @@ pipeline {
     stage('delete container') {
       steps {
         sh '''
-        kubectl get pod
+        
         '''
       }
     }
