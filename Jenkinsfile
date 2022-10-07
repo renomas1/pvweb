@@ -18,8 +18,6 @@ pipeline {
     stage('create container') {
       steps {
         sh '''
-        sudo kubectl apply -f pv1.yml
-	sudo kubectl apply -f pv2.yml
         sudo kubectl apply -k ./
                 '''
       }
