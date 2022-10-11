@@ -1,14 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
+    stage('CheckGitHub') {
       steps {
         git branch: 'main',
         credentialsId: 'renomas1',
         url: 'https://github.com/renomas1/pvweb'
             }
         }
-    stage('delete container') {
+    stage('Delete Service') {
       steps {
         sh '''
         sudo kubectl delete -k ./
@@ -17,7 +17,7 @@ pipeline {
         '''
       }
     }
-    stage('create container') {
+    stage('Create Service') {
       steps {
         sh '''
 	sudo kubectl apply -f pv1.yml
