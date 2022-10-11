@@ -7,8 +7,6 @@ metadata:
 spec:
   ports:
     - port: 80
-  externalIPs:
-    - 10.160.152.115      
   selector:
     app: wordpress
     tier: frontend
@@ -22,7 +20,7 @@ metadata:
     app: wordpress
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 2Gi
