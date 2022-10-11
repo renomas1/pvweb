@@ -7,8 +7,6 @@ metadata:
 spec:
   ports:
     - port: 3306
-  externalIPs:
-    - 192.168.1.101
   selector:
     app: wordpress
     tier: mysql
