@@ -8,7 +8,7 @@ spec:
   ports:
     - port: 80
   externalIPs:
-    - 10.102.102.221      
+    - 10.110.110.200      
   selector:
     app: wordpress
     tier: frontend
