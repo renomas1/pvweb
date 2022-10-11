@@ -26,12 +26,5 @@ pipeline {
                 '''
       }
     }
-    stage('copy') {
-      steps {
-        sh '''
-        sudo kubectl get service
-        '''
-      }
-    }
   }
 }
