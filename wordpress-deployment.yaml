@@ -63,6 +63,11 @@ spec:
         ports:
         - containerPort: 80
           name: wordpress
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m  
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: /var/www/html
@@ -71,16 +76,32 @@ spec:
         persistentVolumeClaim:
           claimName: wp-pv-claim
 ---
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: wordpress-autoscale
-
+  name: wordpress
 spec:
-  maxReplicas: 4
-  minReplicas: 3
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: wordpress
-  targetCPUUtilizationPercentage: 20
+  minReplicas: 3
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+status:
+  observedGeneration: 2
+  currentReplicas: 2
+  desiredReplicas: 2
+  currentMetrics:
+  - type: Resource
+    resource:
+      name: cpu
+      current:
+        averageUtilization: 0
+        averageValue: 0
