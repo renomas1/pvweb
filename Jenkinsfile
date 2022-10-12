@@ -11,6 +11,7 @@ pipeline {
     stage('Delete Service') {
       steps {
         sh '''
+        sudo kubectl delete hpa wordpress-autoscale
         sudo kubectl delete -k ./
 	sudo kubectl delete -f pv1.yml
 	sudo kubectl delete -f pv2.yml
